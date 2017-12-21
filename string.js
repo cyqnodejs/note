@@ -20,4 +20,7 @@ var stt = 'hello tu hao';
 // const str1 = str.includes('e',3); 返回一个布尔值，表示在字符串中是否找到指定字符；true 表示找到。第二个参数表示开始的位置
 // const str1 = str.startsWith('e',1); 返回一个布尔值，表示指定字符是否在字符串首位；true 表示是；第二个参数表示开始的位置
 // const str1 = str.endsWith('l',4); //返回一个布尔值，表示指定字符是否在字符串尾部；true 表示是；第二个参数表示前n个
+// const str1 = str.padStart(8,'s');字符串补全，第一个参数表示原字符串的长度是否达到8，如果达不到则以第二个参数在头部补到8位；
+// 如果接收字符串的长度大于等于原字符长度，则返回原始字符串：
+// const str1 = str.padEnd(8,'s'); 在末尾补全字符
 console.log(str1)

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            margin: 20px auto;
+            width: 500px;
+            text-align: center;
+        }
+
+        .box span {
+            margin: 0 5px;
+            color: red;
+            font-size: 24px;
+        }
+
+        .con {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        .con h3 {
+            width: 100%;
+            height: 30px;
+        }
+
+        .con button {
+            padding: 5px 8px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="con">
+        <h3>00:00:60</h3>
+        <button>开始</button>
+        <button>清零</button>
+        <button>暂停</button>
+    </div>
+    <script type="text/javascript">
+        var oBox = document.querySelector('.box');
+        setInterval(function () {
+            var oldData = new Date(); //获取现在时间
+            var newData = new Date('1/1/2018'); //指定未来时间
+            var t = (newData - oldData) / 1000; //未来时间减去现在时间得出 相差的毫秒数 除以1000 得出秒数；
+            const day = parseInt(t / 3600 / 24); //算出相差天数
+            const hour = parseInt(t % (3600 * 24) / 3600); //算出不够一天的时间
+            const min = parseInt(t % (60 * 60) / 60) //算出不够一小时的时间
+            const miao = parseInt(t % 60) //算出不够一分钟的时间
+            oBox.innerHTML = '距离元旦还有<span>' + day + '</span>天<span>' + hour + '</span>小时<span>' + min +
+                '</span>分钟<span>' + miao + '</span>秒';
+        }, 1000) //每隔一秒执行一次
+
+        var oCon = document.querySelector('.con h3');
+        var k = document.querySelectorAll('.con button');
+        var z = 60;
+        var timer = null;
+        var off = true;
+        k[0].onclick = function () {
+            if (off) {
+                off = false;
+                timer = setInterval(function () {
+                    z--;
+                    oCon.innerHTML = "00:00:" + z;
+                }, 1000)
+            }
+
+        }
+        k[2].onclick = function () {
+            if (!off) {
+                off = true;
+                clearInterval(timer)
+            }
+        }
+        k[1].onclick = function () {
+                clearInterval(timer)
+                z = 60;
+                oCon.innerHTML = "00:00:" + z;
+        }
+    </script>
+</body>
+
+</html>
